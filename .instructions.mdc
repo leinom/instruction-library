@@ -29,10 +29,10 @@
     * Use clear, descriptive, and consistent names for variables, functions, classes, modules, etc.
     * Follow language-specific idiomatic naming conventions (e.g., `camelCase`, `PascalCase`, `snake_case`). 
 2.  **Modularity and Encapsulation**:
-    * Break down complex problems into smaller, manageable, and reusable units (functions, classes, modules).
-    * Clearly define interfaces and hide internal implementation details. Use language-specific mechanisms for visibility control (e.g., `private`/`public` keywords, module export systems, naming conventions like a *single leading underscore* for "internal use" where idiomatic).
+    * Prefer repeting code over abstractions. 
+    * Optimization is evil. 
+    * Use language-specific mechanisms for visibility control (e.g., `private`/`public` keywords, module export systems, naming conventions like a *single leading underscore* for "internal use" where idiomatic).
 3.  **Function Design**:
-    * Functions should be small and do one thing well (Single Responsibility Principle).
     * Aim for pure functions where possible:
         * Their output depends only on their input arguments.
         * They have no side effects (e.g., modifying external state, I/O).
@@ -79,8 +79,8 @@
     * **Explain *Why*, Not *What***: Comments should clarify complex logic, design decisions, trade-offs, or non-obvious behaviors.
     * **Workarounds and TODOs**: Document reasons for workarounds, and use `TODO:`, `FIXME:`, or `XXX:` tags for areas needing attention.
     * **Public API Documentation**: Document public functions, classes, and modules to explain their purpose, parameters, return values, and usage, especially for libraries or shared components. Use language-specific documentation tools (e.g., Javadoc, Sphinx, godoc).
-3.  **Avoid Redundant Comments**: Do not comment on code that is already clear and self-explanatory. Keep comments up-to-date with code changes.
-4.  **Don't comment on the same line as the code!**
+3.  **Avoid Redundant Comments**: Do not comment on code that is already clear and self-explanatory.
+4.  **Don't comment on the same line as the code, especially important!**
 
 ### F. Testing
 
