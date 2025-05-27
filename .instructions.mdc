@@ -1,0 +1,93 @@
+# Agent Coding Instructions & Philosophy
+
+## I. Core Philosophy
+
+* **Clarity and Readability**: Code should be as self-documenting as possible. Strive for simplicity and explicitness.
+    * *Rationale*: Understandable code is easier to maintain, debug, and extend.
+* **Safety and Robustness**: Prioritize writing code that prevents errors, handles them gracefully, and behaves predictably.
+    * *Rationale*: Minimizes bugs, security vulnerabilities, and unexpected crashes.
+* **Performance by Design**: Aim for efficient algorithms and data structures. Understand the performance implications of language features and libraries.
+    * *Rationale*: Ensures applications are responsive and scalable.
+* **Developer Experience (DX)**: Strive for a development environment and codebase that are enjoyable and productive to work with. This includes clear guidelines, good tooling, and fast feedback loops.
+    * *Rationale*: Happy and productive developers write better code.
+* **Pragmatism over Dogmatism**: While these guidelines provide a strong direction, understand when specific project constraints or language idioms necessitate deviations. Always have a good reason.
+    * *Rationale*: Avoids applying rules blindly where they might be counterproductive.
+* **Control and Predictability**: Write code whose behavior is easy to reason about and predict. Minimize side effects.
+    * *Rationale*: Simplifies debugging and understanding system state.
+* **Zero-Cost Abstractions (where applicable)**: Favor abstractions that do not introduce runtime overhead if not used, or where the overhead is negligible and justified by the gain in clarity or safety.
+    * *Rationale*: Enables high-level programming without sacrificing performance, crucial in systems programming but beneficial generally.
+* **Flexibility and Maintainability**: Design code that is easy to change, adapt, and extend over time.
+    * *Rationale*: Software evolves, and adaptable code reduces the cost of future changes.
+
+---
+
+## II. Coding Principles & Style
+
+### A. Code Readability & Structure
+
+1.  **Naming Conventions**:
+    * Use clear, descriptive, and consistent names for variables, functions, classes, modules, etc.
+    * Follow language-specific idiomatic naming conventions (e.g., `camelCase`, `PascalCase`, `snake_case`). 
+2.  **Modularity and Encapsulation**:
+    * Break down complex problems into smaller, manageable, and reusable units (functions, classes, modules).
+    * Clearly define interfaces and hide internal implementation details. Use language-specific mechanisms for visibility control (e.g., `private`/`public` keywords, module export systems, naming conventions like a *single leading underscore* for "internal use" where idiomatic).
+3.  **Function Design**:
+    * Functions should be small and do one thing well (Single Responsibility Principle).
+    * Aim for pure functions where possible:
+        * Their output depends only on their input arguments.
+        * They have no side effects (e.g., modifying external state, I/O).
+    * Limit the number of function parameters. Consider using objects or structs for functions with many parameters.
+4.  **Code Formatting**:
+    * Adhere to a consistent code style. Use automated formatters (e.g., Prettier, Black, gofmt) whenever possible.
+    * *Rationale*: Consistent formatting improves readability and reduces cognitive load.
+
+### B. State Management & Immutability
+
+1.  **Favor Immutability**:
+    * Treat data as immutable by default. Avoid in-place modification of data structures.
+    * Use language features that enforce immutability (e.g., `final` in Java, `const` in JavaScript/C++, immutable data types).
+    * *Rationale*: Simplifies reasoning about state, reduces side effects, and improves thread safety.
+2.  **State Management**:
+    * If mutable state is necessary, isolate it and manage it carefully.
+    * Lift state to the highest appropriate level in the component/application hierarchy.
+    * Avoid mutating state at the lowest levels or passing mutable objects down deeply.
+    * Clearly document and justify any use of mutable state.
+
+### C. Control Flow & Data Processing
+
+1.  **Expressive Control Flow**:
+    * Prefer declarative approaches over imperative ones where it enhances clarity.
+    * Utilize iterators, generators, streams, and higher-order functions (e.g., `map`, `filter`, `reduce`) for data manipulation instead of manual loops where appropriate and idiomatic for the language.
+    * *Rationale*: Can lead to more concise and readable code, especially for complex data transformations.
+2.  **Avoid Deep Nesting**:
+    * Limit the depth of nested control structures (if/else, loops). Refactor using functions or other language constructs.
+
+### D. Error Handling
+
+1.  **Explicit Error Handling**:
+    * Do not ignore errors. Handle them explicitly and gracefully.
+    * Use exceptions or error return values consistently, following language best practices.
+    * Provide meaningful error messages that can help diagnose problems.
+    * *Rationale*: Robust applications anticipate and manage failure conditions.
+2.  **Fail Fast**:
+    * Validate inputs and detect error conditions as early as possible.
+
+### E. Comments and Documentation
+
+1.  **Self-Documenting Code First**: Strive to make your code's intent clear through good naming and structure.
+2.  **When to Comment**:
+    * **Explain *Why*, Not *What***: Comments should clarify complex logic, design decisions, trade-offs, or non-obvious behaviors.
+    * **Workarounds and TODOs**: Document reasons for workarounds, and use `TODO:`, `FIXME:`, or `XXX:` tags for areas needing attention.
+    * **Public API Documentation**: Document public functions, classes, and modules to explain their purpose, parameters, return values, and usage, especially for libraries or shared components. Use language-specific documentation tools (e.g., Javadoc, Sphinx, godoc).
+3.  **Avoid Redundant Comments**: Do not comment on code that is already clear and self-explanatory. Keep comments up-to-date with code changes.
+4.  **Don't comment on the same line as the code!**
+
+### F. Testing
+
+1.  **Write Tests**:
+    * Write unit, integration, and (where appropriate) end-to-end tests for your code.
+    * Aim for good test coverage, focusing on critical paths and edge cases.
+    * Tests serve as a form of documentation and prevent regressions.
+2.  **Testable Code**:
+    * Design code to be easily testable (e.g., by minimizing side effects, using dependency injection).
+
