@@ -1,14 +1,24 @@
+# Immutability and safety
+
 When possible suggest using immutable classes and objects. 
 
-State should be pushed as high as possible. 
+Always use `final` when possible, including on all method parameters.
 
-Avoid side effects and point them out. 
+If known, use `@NotNull` or `@Nullable` annotations on method parameters and return values. 
 
-If known, suggest using `@NotNull` or `@Nullable`. 
+# Design Principles
+
+State should be pushed as high as possible.
 
 Prefer composition over inheritance and dependency injection where possible.
 
-Always use `final` when possible.
+Design code that is easily testable. Favor approaches that minimize dependencies and make it easy to isolate components.
 
-Do not use unnecessary comments, the code should document itself by using clear naming.
+# Code Style and Clarity
+
+Avoid side effects and point them out. 
+
+Do not use unnecessary comments, the code should document itself by using clear naming. 
+
+Comments should be reserved for complex logic or unusual design decisions. Briefly explain the *why* behind the code.
 
